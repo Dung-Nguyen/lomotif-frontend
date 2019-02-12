@@ -1,0 +1,25 @@
+@import 'variables.scss';
+@import 'mixins.scss';
+@import 'grid.scss';
+
+h1,
+h2 {
+  color: $primaryColor;
+}
+
+// .container {
+//   //   display: -webkit-flex;
+//   //   display: flex;
+//   //   -webkit-flex-flow: row wrap;
+//   //   flex-flow: row wrap;
+//   position: relative;
+// }
+
+// .card__list {
+//   border: 1px solid #111;
+//   position: absolute;
+//   top: 15px;
+//   bottom: 15px;
+//   left: 0;
+//   right: 0;
+// }

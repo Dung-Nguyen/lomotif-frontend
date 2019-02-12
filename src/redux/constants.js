@@ -1,0 +1,3 @@
+export const GET_CARD_BEGIN = 'GET_CARD_BEGIN'
+export const GET_CARD_SUCCESS = 'GET_CARD_SUCCESS'
+export const GET_CARD_ERROR = 'GET_CARD_ERROR'

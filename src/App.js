@@ -1,28 +1,38 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as actions from './redux/actions/card.action'
+import CardList from './components/CardList'
+
+const mapStateToProps = state => ({
+  ...state
+})
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({ ...actions }, dispatch)
+})
 
 class App extends Component {
   render() {
+    console.log(this.props)
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="container">
+        <h1>Hearthstone Deck</h1>
+        <div>
+          Content Card here
+          <CardList />
+        </div>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+App.propTypes = {
+  actions: PropTypes.object.isRequired
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)
