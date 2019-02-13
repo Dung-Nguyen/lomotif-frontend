@@ -41,7 +41,6 @@ class CardList extends Component {
   render() {
     const { cards } = this.props
     if (cards.hasOwnProperty('payload') && cards.payload.getCardPending) {
-      console.log('asdas')
       return <Loading />
     }
 
