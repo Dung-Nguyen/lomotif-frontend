@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../redux/actions/card.action'
 import Loading from './Loading'
+import InfiniteScroll from './InfiniteScroll'
 
 const mapStateToProps = state => ({
   ...state,
@@ -33,24 +34,33 @@ class CardList extends Component {
     getCard()
   }
 
+  loadFunc = () => {
+    console.log('Load more data here')
+  }
+
   render() {
     const { cards } = this.props
     if (cards.hasOwnProperty('payload') && cards.payload.getCardPending) {
-      console.log('asdas')
       return <Loading />
     }
 
     return (
       <div className="card__list">
-        <ul>
-          {cardArr.map(item => (
-            <li key={item.dbf_id}>
-              <p>{item.dbf_id}</p>
-              <p>{item.name}</p>
-              <p>{item.player_class}</p>
-            </li>
-          ))}
-        </ul>
+        <InfiniteScroll
+          loadMore={() => this.loadFunc()}
+          hasMore={true}
+          isLoading={false}
+        >
+          <ul>
+            {cardArr.map(item => (
+              <li key={item.dbf_id}>
+                <p>{item.dbf_id}</p>
+                <p>{item.name}</p>
+                <p>{item.player_class}</p>
+              </li>
+            ))}
+          </ul>
+        </InfiniteScroll>
       </div>
     )
   }
