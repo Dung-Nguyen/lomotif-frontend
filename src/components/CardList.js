@@ -53,10 +53,12 @@ class CardList extends Component {
         >
           <ul>
             {cardArr.map(item => (
-              <li key={item.dbf_id}>
-                <p>{item.dbf_id}</p>
-                <p>{item.name}</p>
-                <p>{item.player_class}</p>
+              <li key={item.dbf_id} className="card">
+                <div className="card-inner">
+                  <p>{item.dbf_id}</p>
+                  <p>{item.name}</p>
+                  <p>{item.player_class}</p>
+                </div>
               </li>
             ))}
           </ul>
