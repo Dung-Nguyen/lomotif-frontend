@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../redux/actions/card.action'
-import Loading from './Loading'
+import Loading from './Indicator'
 import InfiniteScroll from './InfiniteScroll'
 
 const mapStateToProps = state => ({
@@ -28,6 +28,13 @@ const cardArr = [
   }
 ]
 
+/**
+ * CardList Component
+ * Using React.Component
+ *
+ * Renders a layout Card list
+ */
+
 class CardList extends Component {
   componentDidMount = () => {
     const { getCard } = this.props.actions
@@ -40,6 +47,7 @@ class CardList extends Component {
 
   render() {
     const { cards } = this.props
+
     if (cards.hasOwnProperty('payload') && cards.payload.getCardPending) {
       return <Loading />
     }
@@ -65,10 +73,16 @@ class CardList extends Component {
     )
   }
 }
+
 CardList.propTypes = {
-  cards: PropTypes.object.isRequired,
+  /** Data to load on Card list */
+  cards: PropTypes.array.isRequired,
+  /** Actions related to card's data from Api */
   actions: PropTypes.object.isRequired
 }
+
+CardList.defaultProps = { cards: [] }
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
