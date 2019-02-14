@@ -1,0 +1,41 @@
+@mixin spacing-x-list() {
+  @for $i from 1 through length($refspacings) {
+    $val: nth($refspacings, $i);
+
+    // margin with m-x class
+    .m-#{$i} {
+      margin: #{$val}rem;
+    }
+    .ml-#{$i} {
+      margin-left: #{$val}rem;
+    }
+    .mr-#{$i} {
+      margin-right: #{$val}rem;
+    }
+    .mt-#{$i} {
+      margin-top: #{$val}rem;
+    }
+    .mb-#{$i} {
+      margin-bottom: #{$val}rem;
+    }
+
+    // pading with p-x class
+    .p-#{$i} {
+      padding: #{$val}rem;
+    }
+    .pl-#{$i} {
+      padding-left: #{$val}rem;
+    }
+    .pr-#{$i} {
+      padding-right: #{$val}rem;
+    }
+    .pt-#{$i} {
+      padding-top: #{$val}rem;
+    }
+    .pb-#{$i} {
+      padding-bottom: #{$val}rem;
+    }
+  }
+}
+
+@include spacing-x-list();

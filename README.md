@@ -26,3 +26,8 @@ The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run doc:watch`
+
+Runs the document in the development mode.<br>
+Open [http://localhost:6060](http://localhost:6060) to view it in the browser.

@@ -6,6 +6,8 @@ import PropTypes from 'prop-types'
  * Using React.Component
  *
  * Renders a layout access scroll to load data
+ *
+ * **NOTE**: Work with window.onscroll
  */
 
 class InfiniteScroll extends Component {
@@ -32,7 +34,7 @@ class InfiniteScroll extends Component {
 
 InfiniteScroll.propTypes = {
   /** Prop to determine if there is an error loading more data */
-  error: PropTypes.object.isRequired,
+  error: PropTypes.object,
   /** Prop to identify more data */
   hasMore: PropTypes.bool.isRequired,
   /**  Prop to loading data */
@@ -41,6 +43,6 @@ InfiniteScroll.propTypes = {
   loadMore: PropTypes.func
 }
 
-InfiniteScroll.defaultProps = { error: null, hasMore: false, isLoading: false }
+InfiniteScroll.defaultProps = { hasMore: false, isLoading: false }
 
 export default InfiniteScroll

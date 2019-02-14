@@ -2,7 +2,14 @@ Loading component example:
 
 ```js
 initialState = {
-  loading: true
+  loading: false
 }
-;<Indicator loading={state.loading} />
+showIndicator = () => {
+  setState({ loading: true })
+  setTimeout(() => setState({ loading: false }), 2000)
+}
+;<div>
+  <Button onClick={() => showIndicator()}>Click Me</Button>
+  <Indicator loading={state.loading} />
+</div>
 ```
