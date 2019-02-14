@@ -1,7 +1,9 @@
+@import 'reset.scss';
 @import 'variables.scss';
 @import 'mixins.scss';
-@import 'reset.scss';
 @import 'grid.scss';
+@import 'components/indicator.scss';
+@import 'components/button.scss';
 
 h1,
 h2 {
@@ -27,6 +29,7 @@ h2 {
 
 .body {
   background-color: $bgColor;
+  position: relative;
 }
 
 .b-header {

@@ -11,13 +11,17 @@ import PropTypes from 'prop-types'
 class Indicator extends Component {
   render() {
     const { loading } = this.props
-    return loading ? <div className="loading">Loading...</div> : null
+    return loading ? (
+      <div className="indicator">
+        <div id="loader" />
+      </div>
+    ) : null
   }
 }
 
 Indicator.propTypes = {
   /** Prop to display or hide Indicator */
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.bool
 }
 
 Indicator.defaultProps = { loading: false }
