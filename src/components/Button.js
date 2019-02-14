@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+/**
+ * Button Component
+ * Using React.Component
+ *
+ * Renders a Button
+ */
+
 class Button extends Component {
   render() {
     const { text, className, onClick, outline } = this.props
