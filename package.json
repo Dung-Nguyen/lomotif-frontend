@@ -16,7 +16,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "doc": "npx styleguidist server"
+    "doc:watch": "npx styleguidist server",
+    "doc:build": "npx styleguidist build"
   },
   "eslintConfig": {
     "extends": "react-app"
