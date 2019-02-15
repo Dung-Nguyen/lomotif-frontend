@@ -1,37 +1,11 @@
-.c1,
-.c2,
-.c3,
-.c4,
-.c5 {
-  width: 100%;
-}
-
-@media (min-width: 600px) {
-  .c2,
-  .c3,
-  .c4,
-  .c5 {
-    width: 50%;
-  }
-}
-
-@media (min-width: 800px) {
-  .c1 {
-    width: 60%;
-  }
-  .c2 {
-    width: 40%;
-  }
-  .c3,
-  .c4,
-  .c5 {
-    width: 33.33%;
-  }
-}
-
+/* ※ * ※ * ※ * ※ * ※ *
+	gird layout
+* ※ * ※ * ※ * ※ * ※ */
+//* * * * * .container * * * * */
 .container {
+  max-width: 1280px;
   margin-left: auto;
-  margin-right: auto; 
+  margin-right: auto;
 }
 
 @media screen and (max-width: 1280px) {
