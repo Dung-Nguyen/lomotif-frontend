@@ -1,0 +1,12 @@
+{
+    "files.autoSave": "onFocusChange",
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "eslint.autoFixOnSave": true,
+    "eslint.enable": true,
+    "prettier.singleQuote": true,
+    "prettier.semi": true,
+    "eslint.options": { "configFile": ".eslintrc.json" },
+    "eslint.validate": ["javascript", "javascriptreact", { "language": "html", "autoFix": true }]
+  }
+  

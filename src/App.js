@@ -1,27 +1,65 @@
-import React, { Component } from 'react'
-import CardList from './components/CardList'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from './redux/actions/card.action';
+import CardList from './components/CardList';
+import Button from './components/Button';
+
+const mapStateToProps = state => ({
+  ...state
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({ ...actions }, dispatch)
+});
 
 class App extends Component {
   render() {
+    console.log(this.props);
     return (
       <div className="body">
-        <div className="b-header">
+        <header className="b-header">
           <div className="container">
-            <div className="header-inner">
-              <h1 className="branch-name">Hearthstone Deck</h1>
+            <div className="inner">
+              <div className="logo">
+                <a href="/">
+                  <div className="branch-name">
+                    <img
+                      src={require('./images/hero_section_logo.png')}
+                      alt="Lomotif"
+                    />
+                  </div>
+                  <h1 className="name">Hearthstone Deck</h1>
+                </a>
+              </div>
+              <div className="btns">
+                <Button text="Create new desk" outline />
+              </div>
             </div>
           </div>
-        </div>
+        </header>
 
-        <div className="b-main">
+        <main className="b-main">
           <div className="container">
-            <h2 className="title-main">Content Card here</h2>
-            <CardList />
+            <article className="inner">
+              <div className="title-area">
+                <h2 className="title">Card</h2>
+              </div>
+              <CardList className="content-area" />
+            </article>
           </div>
-        </div>
+        </main>
       </div>
-    )
+    );
   }
 }
 
-export default App
+App.propTypes = {
+  actions: PropTypes.object.isRequired
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

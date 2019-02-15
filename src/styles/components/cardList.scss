@@ -1,0 +1,95 @@
+/* * * * * * * * * * * * * * * * * * * * * * *
+		list card layout
+* * * * * * * * * * * * * * * * * * * * * * */
+.card__list {
+  ul {
+    // padding: 1rem;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+  }
+
+  li {
+    margin: 1rem 0.5rem;
+    width: 18%;
+  }
+
+  /* * * * * * * * * * * * * * * * * * * * * * *
+		card
+  * * * * * * * * * * * * * * * * * * * * * * */
+  .card {
+    height: 250px;
+    box-shadow: 0 0 0 1px $white, 0 0 0 1px $white, 0px 1px 13px 1px $white;
+    border-radius: 1rem;
+    background: #1e1e1d;
+
+    .card-container {
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-header {
+      background: rgba(246, 169, 54, 1);
+      padding: 0.5rem 1rem 0.5rem 0;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+
+      .title {
+        padding-left: 1rem;
+        padding-bottom: 0.2rem;
+        border-bottom: 2px solid $white;
+        text-transform: uppercase;
+        font-size: 1.5rem;
+        width: 80%;
+      }
+    }
+
+    .card-inner {
+      color: #ff8a00;
+      text-align: center;
+      font-size: 2.5rem;
+      background: #1e1e1d;
+    }
+
+    .card-bottom {
+      font-size: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem;
+      border-bottom-left-radius: 1rem;
+      border-bottom-right-radius: 1rem;
+      background: #1e1e1d;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .card__list {
+    .card {
+      .card-header .title {
+        font-size: 1rem;
+      }
+      .card-inner {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card__list {
+    li {
+      width: 30%;
+    }
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .card__list li {
+    width: 100%;
+  }
+}
