@@ -78,6 +78,7 @@ Dropdown.propTypes = {
   title: PropTypes.string,
   /** Func handle select item in dropdown */
   onSelected: PropTypes.func.isRequired,
+  /** Add custom class for dropdown */
   className: PropTypes.string
 };
 

@@ -124,7 +124,7 @@ CardList.propTypes = {
   cards: PropTypes.object.isRequired,
   /** Actions related to card's data from Api */
   actions: PropTypes.object.isRequired,
-  /** ClassName */
+  /** Add custom class for Card list */
   className: PropTypes.string
 };
 
