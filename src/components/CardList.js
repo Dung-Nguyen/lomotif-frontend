@@ -94,7 +94,7 @@ class CardList extends Component {
           isLoading={false}
         >
           <ul>
-            {cardArr.map((item, index) => (
+            {cardArr.map(item => (
               <li key={item.dbf_id}>
                 <div className="card">
                   <div className="card-container">
@@ -112,42 +112,6 @@ class CardList extends Component {
                 </div>
               </li>
             ))}
-            <li>
-              <div className="card card-0">
-                <div className="card-container">
-                  <div className="card-header">
-                    <div className="title">Neutral</div>
-                  </div>
-                  <div className="card-inner">
-                    <p>Avenger</p>
-                  </div>
-                  <div className="card-bottom">
-                    <div className="f-left">900</div>
-                    <div className="f-right">Lomotif</div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div className="card card-1">
-                <div className="border border--left border--top" />
-                <div className="border border--right border--top" />
-                <div className="card-container">
-                  <div className="card-header">
-                    <div className="title">Neutral</div>
-                  </div>
-                  <div className="card-inner">
-                    <p>Avenger</p>
-                  </div>
-                  <div className="card-bottom">
-                    <div className="f-left">900</div>
-                    <div className="f-right">Lomotif</div>
-                  </div>
-                </div>
-                <div className="border border--left border--bottom" />
-                <div className="border border--right border--bottom" />
-              </div>
-            </li>
           </ul>
         </InfiniteScroll>
       </div>

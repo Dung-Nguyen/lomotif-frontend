@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import onClickOutside from 'react-onclickoutside'
-import { playerClass } from '../constants'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import onClickOutside from 'react-onclickoutside';
+import { playerClass } from '../constants';
 
 /**
  * Dropdown Component
@@ -14,31 +14,31 @@ class Dropdown extends Component {
   state = {
     listOpen: false,
     itemSelected: ''
-  }
+  };
 
   handleClickOutside() {
     this.setState({
       listOpen: false
-    })
+    });
   }
 
   toggleList = () => {
     this.setState(prevState => ({
       listOpen: !prevState.listOpen
-    }))
-  }
+    }));
+  };
 
   toggleSelected = item => {
-    this.setState({ itemSelected: item })
-    this.toggleList()
-    this.props.onSelected(item)
-  }
+    this.setState({ itemSelected: item });
+    this.toggleList();
+    this.props.onSelected(item);
+  };
 
   render() {
-    const { title } = this.props
-    const { listOpen, itemSelected } = this.state
+    const { title, className } = this.props;
+    const { listOpen, itemSelected } = this.state;
     return (
-      <div className="dd-wrapper">
+      <div className={`dd-wrapper ${className ? className : ''}`}>
         <div className="dd-header" onClick={() => this.toggleList()}>
           <div className="dd-header-title">{itemSelected || title}</div>
           {listOpen ? (
@@ -69,7 +69,7 @@ class Dropdown extends Component {
           </ul>
         ) : null}
       </div>
-    )
+    );
   }
 }
 
@@ -77,7 +77,8 @@ Dropdown.propTypes = {
   /** Prop display title of dropdown */
   title: PropTypes.string,
   /** Func handle select item in dropdown */
-  onSelected: PropTypes.func.isRequired
-}
+  onSelected: PropTypes.func.isRequired,
+  className: PropTypes.string
+};
 
-export default onClickOutside(Dropdown)
+export default onClickOutside(Dropdown);

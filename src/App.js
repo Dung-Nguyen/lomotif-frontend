@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import * as actions from './redux/actions/card.action';
 import CardList from './components/CardList';
 import Button from './components/Button';
+import Dropdown from './components/Dropdown';
 
 const mapStateToProps = state => ({
   ...state
@@ -34,7 +35,14 @@ class App extends Component {
                 </a>
               </div>
               <div className="btns">
-                <Button text="Create new desk" outline />
+                <Button outline>
+                  <span>Create new desk</span>
+                  <img
+                    src={require('./images/new_file.svg')}
+                    alt="Create new desk"
+                    width="14"
+                  />
+                </Button>
               </div>
             </div>
           </div>
@@ -45,7 +53,9 @@ class App extends Component {
             <article className="inner">
               <div className="title-area">
                 <h2 className="title">Card</h2>
+                <Dropdown className="dd-filter" title="Decks" />
               </div>
+
               <CardList className="content-area" />
             </article>
           </div>
