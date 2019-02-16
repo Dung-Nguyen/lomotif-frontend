@@ -25,6 +25,8 @@
   .dd-list {
     z-index: 10;
     position: absolute;
+    left: 0;
+    right: 0;
     padding: 0.5rem 1rem;
     max-height: 230px;
     overflow-y: scroll;
@@ -37,7 +39,6 @@
 
     .dd-list-item {
       padding: 0.75rem 0;
-      display: inline-block;
       cursor: pointer;
 
       &.selected,
