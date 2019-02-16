@@ -1,0 +1,63 @@
+.dd-wrapper {
+  user-select: none;
+  position: relative;
+  // width: 170px;
+
+  .dd-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    line-height: 38px;
+    // border: 1px solid $pink;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    position: relative;
+    // background-color: $white;
+    padding: 0px 9px;
+
+    .dd-header-title {
+      font-weight: 300;
+      margin-right: 1rem;
+    }
+
+    img {
+      width: 1rem;
+    }
+  }
+
+  .dd-list {
+    z-index: 10;
+    position: absolute;
+    border: 1px solid $pink;
+    border-top: none;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    // background-color: $white;
+    box-shadow: 0 2px 5px -1px $gray;
+    padding: 0.5rem 1rem;
+    max-height: 230px;
+    overflow-y: scroll;
+
+    background-color: #303030;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    background-clip: padding-box;
+
+    .dd-list-item {
+      padding: 0.75rem 0;
+      display: inline-block;
+      cursor: pointer;
+
+      &.selected,
+      &:hover,
+      &:focus {
+        color: $white;
+        text-shadow: 0 0 5px white, 0 0 2px #f6a936;
+        // background-color: $pink;
+      }
+    }
+  }
+}

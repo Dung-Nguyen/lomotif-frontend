@@ -1,25 +1,179 @@
+@import 'reset.scss';
 @import 'variables.scss';
 @import 'mixins.scss';
 @import 'grid.scss';
+@import 'components/indicator.scss';
+@import 'components/button.scss';
+@import 'components/dropdown.scss';
+@import 'components/cardList.scss';
+
+/* * * * * * * * * * * * * * * * * * * * * * *
+		common
+* * * * * * * * * * * * * * * * * * * * * * */
+body {
+  font-size: 16px;
+  color: $textColor;
+  font-family: Roboto, Tahoma, Verdana, Segoe, sans-serif;
+}
+
+img {
+  width: 100%;
+}
 
 h1,
 h2 {
-  color: $primaryColor;
+  font-weight: 400;
 }
 
-// .container {
-//   //   display: -webkit-flex;
-//   //   display: flex;
-//   //   -webkit-flex-flow: row wrap;
-//   //   flex-flow: row wrap;
-//   position: relative;
-// }
+a {
+  background: 0 0;
+  text-decoration: none;
+  border: none;
+  outline: 0;
 
-// .card__list {
-//   border: 1px solid #111;
-//   position: absolute;
-//   top: 15px;
-//   bottom: 15px;
-//   left: 0;
-//   right: 0;
-// }
+  &:active,
+  &:hover {
+    outline: 0;
+  }
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * *
+		body
+* * * * * * * * * * * * * * * * * * * * * * */
+.body {
+  background-color: $bgColor;
+  position: relative;
+  background: linear-gradient(to bottom, $bgColor 0%, $bgColor-bottom 100%);
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * *
+		header
+* * * * * * * * * * * * * * * * * * * * * * */
+.b-header {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  width: 100%;
+  height: 55px;
+  padding: 15px 0;
+  background-color: $bgColor;
+  background: linear-gradient(
+    to bottom,
+    $bgColor 70%,
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  //* * * * * .inner * * * * */
+  .inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  //* * * * * .logo * * * * */
+  .logo {
+    width: 350px;
+
+    //* * * * * .branch-name * * * * */
+    .branch-name {
+      width: 50px;
+      height: 50px;
+      background-color: $white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 85%;
+      }
+    }
+
+    //* * * * * .name * * * * */
+    h1.name {
+      font-size: 1.5rem;
+      letter-spacing: 0.2rem;
+      margin-left: 1rem;
+    }
+    a {
+      transition: all 0.3s ease-out;
+      color: $white;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+  }
+
+  //* * * * * .btns * * * * */
+  .btns {
+    .btn img {
+      display: none;
+    }
+  }
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * *
+		main
+* * * * * * * * * * * * * * * * * * * * * * */
+.b-main {
+  overflow: scroll;
+  height: 100vh;
+  position: relative;
+  padding: 90px 0;
+
+  /* * * * * .title-area * * * * */
+  .title-area {
+    width: 100%;
+    margin: 0 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    /* * * * * .title * * * * */
+    .title {
+      line-height: 1;
+      margin-top: 9px;
+      margin-bottom: 3px;
+      padding-right: 15px;
+      letter-spacing: 0.02em;
+      font-size: 2rem;
+    }
+
+    /* * * * * .dd-filter * * * * */
+    .dd-filter {
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .b-header {
+    .logo {
+      width: 80%;
+
+      .branch-name {
+        width: 25px;
+        height: 25px;
+      }
+    }
+
+    .btns {
+      .btn {
+        border-radius: 50%;
+        width: 4rem;
+        height: 4rem;
+
+        span {
+          display: none;
+        }
+        img {
+          display: block;
+          width: 2rem;
+          margin-left: 3px;
+        }
+      }
+    }
+  }
+}
