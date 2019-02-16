@@ -1,23 +1,26 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as actions from './redux/actions/card.action';
-import CardList from './components/CardList';
-import Button from './components/Button';
-import Dropdown from './components/Dropdown';
+import React, { Component } from 'react'
 
-const mapStateToProps = state => ({
-  ...state
-});
+import CardList from './components/CardList'
+import Button from './components/Button'
+import Dropdown from './components/Dropdown'
 
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({ ...actions }, dispatch)
-});
+/**
+ * App Component
+ * Using React.Component
+ *
+ * Renders a main page
+ */
 
 class App extends Component {
+  createDeck = () => {
+    console.log('Create new Deck')
+  }
+
+  filterCard = item => {
+    console.log(`Player class selected: ${item}`)
+  }
+
   render() {
-    console.log(this.props);
     return (
       <div className="body">
         <header className="b-header">
@@ -35,7 +38,7 @@ class App extends Component {
                 </a>
               </div>
               <div className="btns">
-                <Button outline>
+                <Button outline onClick={() => this.createDeck()}>
                   <span>Create new desk</span>
                   <img
                     src={require('./images/new_file.svg')}
@@ -53,7 +56,11 @@ class App extends Component {
             <article className="inner">
               <div className="title-area">
                 <h2 className="title">Card</h2>
-                <Dropdown className="dd-filter" title="Decks" />
+                <Dropdown
+                  className="dd-filter"
+                  title="Decks"
+                  onSelected={item => this.filterCard(item)}
+                />
               </div>
 
               <CardList className="content-area" />
@@ -61,15 +68,8 @@ class App extends Component {
           </div>
         </main>
       </div>
-    );
+    )
   }
 }
 
-App.propTypes = {
-  actions: PropTypes.object.isRequired
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default App
