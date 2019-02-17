@@ -22,13 +22,15 @@ const mapDispatchToProps = dispatch => ({
  * Using React.Component
  *
  * Renders a layout Card list
+ *
+ * **NOTE**: Data load inside func componentWillReceiveProps()
  */
 
 class CardList extends Component {
   componentWillReceiveProps = nextProps => {
     const { deck_id } = this.props.deck
     if (nextProps.deck.deck_id !== deck_id) {
-      // Create other deck
+      // Create other deck with deck_id from BE
       const { getCard } = this.props.actions
       const args = { deck_id: nextProps.deck.deck_id }
       getCard(args)
