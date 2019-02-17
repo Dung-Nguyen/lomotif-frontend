@@ -13,6 +13,8 @@
 body {
   font-size: 16px;
   color: $textColor;
+  background: $bgColor;
+  min-height: 100vh;
   font-family: Roboto, Tahoma, Verdana, Segoe, sans-serif;
 }
 
@@ -114,10 +116,9 @@ a {
 		main
 * * * * * * * * * * * * * * * * * * * * * * */
 .b-main {
-  overflow: scroll;
-  height: 100vh;
   position: relative;
   padding: 90px 0;
+  background-color: $bgColor;
 
   /* * * * * .title-area * * * * */
   .title-area {
@@ -135,10 +136,6 @@ a {
       padding-right: 15px;
       letter-spacing: 0.02em;
       font-size: 2rem;
-    }
-
-    /* * * * * .dd-filter * * * * */
-    .dd-filter {
     }
   }
 }

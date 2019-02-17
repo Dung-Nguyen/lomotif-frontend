@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import * as actions from '../redux/actions/card.action'
 import * as helper from '../utils/helper'
 import InfiniteScroll from './InfiniteScroll'
+import Indicator from './Indicator'
 
 const mapStateToProps = state => ({
   ...state,
@@ -24,10 +25,6 @@ const mapDispatchToProps = dispatch => ({
  */
 
 class CardList extends Component {
-  state = {
-    hasMore: false
-  }
-
   componentWillReceiveProps = nextProps => {
     const { deck_id } = this.props.deck
     if (nextProps.deck.deck_id !== deck_id) {
@@ -43,31 +40,31 @@ class CardList extends Component {
     const { payload } = this.props.card
     const { deck_id } = this.props.deck
 
-    if (payload.data) {
+    if (payload && payload.data) {
       const page = helper.getParameterByName('page', payload.data.next)
       const args = { page, deck_id }
       if (page) {
         getCard(args)
-      } else {
-        this.setState({ hasMore: false })
       }
     }
   }
 
   render() {
     const { className } = this.props
-    const { items } = this.props.card
+    const { items, payload } = this.props.card
+
+    if (!payload) return null
 
     return (
       <div className={`card__list ${className ? className : ''}`}>
+        <Indicator loading={payload.getCardPending} />
         <InfiniteScroll
           loadMore={() => this.loadFunc()}
-          hasMore={true}
-          isLoading={false}
+          hasMore={payload.data ? payload.data.count > 0 : true}
         >
           <ul>
             {items.map(item => (
-              <li key={item.dbf_id}>
+              <li key={item.dbfId}>
                 <div className="card">
                   <div className="card-container">
                     <div className="card-header">
