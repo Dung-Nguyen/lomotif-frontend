@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -9,7 +8,6 @@ import * as deckActions from './redux/actions/deck.action'
 import CardList from './components/CardList'
 import Button from './components/Button'
 import Dropdown from './components/Dropdown'
-import Indiator from './components/Indicator'
 
 const mapStateToProps = state => ({
   card: state.cardReducer,
@@ -54,10 +52,10 @@ class App extends Component {
   }
 
   render() {
-    const { getCardPending } = this.props.card
+    const { items } = this.props.card
+
     return (
       <div className="body">
-        <Indiator loading={getCardPending} />
         <header className="b-header">
           <div className="container">
             <div className="inner">
@@ -89,14 +87,16 @@ class App extends Component {
         <main className="b-main">
           <div className="container">
             <article className="inner">
-              <div className="title-area">
-                <h2 className="title">Card</h2>
-                <Dropdown
-                  className="dd-filter"
-                  title="Decks"
-                  onSelected={item => this.filterCard(item)}
-                />
-              </div>
+              {items.length ? (
+                <div className="title-area">
+                  <h2 className="title">Card</h2>
+                  <Dropdown
+                    className="dd-filter"
+                    title="Decks"
+                    onSelected={item => this.filterCard(item)}
+                  />
+                </div>
+              ) : null}
 
               <CardList className="content-area" />
             </article>

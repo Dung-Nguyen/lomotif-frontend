@@ -7,7 +7,11 @@ import {
 
 const initialize = {
   items: [],
-  payload: {}
+  payload: {
+    data: {},
+    getCardPending: false,
+    getCardError: null
+  }
 }
 
 const cardReducer = (state = initialize, action) => {
