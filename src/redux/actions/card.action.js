@@ -1,8 +1,29 @@
-import { GET_CARD_BEGIN, GET_CARD_SUCCESS, GET_CARD_ERROR } from '../constants'
+import {
+  GET_CARD_BEGIN,
+  GET_CARD_SUCCESS,
+  GET_CARD_ERROR,
+  RESET_CARD_IN_DECK
+} from '../constants'
 import Api from '../../config/api'
 
-export const getCard = () => {
-  const url = 'URL_GET_CARD'
+export const resetCardInDeck = () => {
+  return dispatch => {
+    return dispatch({ type: RESET_CARD_IN_DECK })
+  }
+}
+
+export const getCard = args => {
+  let url = `/playerclass/getDeckCards/?deck_id=${args.deck_id}`
+
+  if (args.playerClass) {
+    // filter card here
+    url += `&playerClass=${args.playerClass}`
+  } else {
+    if (args.page) {
+      // load more card here
+      url += `&page=${args.page}`
+    }
+  }
 
   return dispatch => {
     dispatch(getCardBegin())
