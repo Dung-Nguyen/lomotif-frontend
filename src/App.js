@@ -87,16 +87,14 @@ class App extends Component {
         <main className="b-main">
           <div className="container">
             <article className="inner">
-              {items.length ? (
-                <div className="title-area">
-                  <h2 className="title">Card</h2>
-                  <Dropdown
-                    className="dd-filter"
-                    title="Decks"
-                    onSelected={item => this.filterCard(item)}
-                  />
-                </div>
-              ) : null}
+              <div className="title-area">
+                <h2 className="title">Card</h2>
+                <Dropdown
+                  className="dd-filter"
+                  title="Decks"
+                  onSelected={item => this.filterCard(item)}
+                />
+              </div>
 
               <CardList className="content-area" />
             </article>
