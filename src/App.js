@@ -1,8 +1,25 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
+import * as cardActions from './redux/actions/card.action'
+import * as deckActions from './redux/actions/deck.action'
 
 import CardList from './components/CardList'
 import Button from './components/Button'
 import Dropdown from './components/Dropdown'
+import Indiator from './components/Indicator'
+
+const mapStateToProps = state => ({
+  card: state.cardReducer,
+  deck: state.deckReducer
+})
+
+const mapDispatchToProps = dispatch => ({
+  cardActions: bindActionCreators({ ...cardActions }, dispatch),
+  deckActions: bindActionCreators({ ...deckActions }, dispatch)
+})
 
 /**
  * App Component
@@ -12,17 +29,35 @@ import Dropdown from './components/Dropdown'
  */
 
 class App extends Component {
+  componentDidMount = () => {
+    this.initializeDeck()
+  }
+
+  initializeDeck = async () => {
+    const { resetCardInDeck } = this.props.cardActions
+    const { initDeck } = this.props.deckActions
+
+    resetCardInDeck()
+    await initDeck()
+  }
+
   createDeck = () => {
-    console.log('Create new Deck')
+    this.initializeDeck()
   }
 
   filterCard = item => {
-    console.log(`Player class selected: ${item}`)
+    const { deck_id } = this.props.deck
+    const { resetCardInDeck, getCard } = this.props.cardActions
+    const args = { deck_id, playerClass: item }
+    resetCardInDeck()
+    getCard(args)
   }
 
   render() {
+    const { getCardPending } = this.props.card
     return (
       <div className="body">
+        <Indiator loading={getCardPending} />
         <header className="b-header">
           <div className="container">
             <div className="inner">
@@ -72,4 +107,7 @@ class App extends Component {
   }
 }
 
-export default App
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)

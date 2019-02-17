@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: 'http://YOUR_BASE_URL_CALL_API'
+  baseURL: 'https://lomotif-test-backend.herokuapp.com/api'
 })
 
 // remove comment if the application needs authorization
